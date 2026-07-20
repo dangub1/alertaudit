@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlertAudit — independent hit-rate audits for trading alert channels</title>
+<meta name="description" content="Forward 90 days of alerts from any paid Discord, indicator, or signal service. Get an independent audit: real hit rate, average R, and what following every alert would have actually made.">
+<style>
+  :root {
+    --bg: #fbfaf8; --ink: #1a1d21; --muted: #5c6470; --accent: #0d6e5f;
+    --accent-ink: #ffffff; --card: #ffffff; --line: #e5e2dc; --warn-bg: #fdf6ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #101317; --ink: #e8e6e1; --muted: #9aa3ad; --accent: #2fa08c;
+      --accent-ink: #0b0e11; --card: #171b20; --line: #262b32; --warn-bg: #1c1913; }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 56px; }
+  .kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
+  h1 { font-size: clamp(30px, 5.5vw, 44px); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; }
+  .sub { margin-top: 20px; font-size: 19px; color: var(--muted); }
+  .cta { display: inline-block; margin-top: 32px; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 18px; padding: 14px 28px; border-radius: 10px; text-decoration: none; }
+  .cta:hover { filter: brightness(1.08); }
+  .cta-note { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 24px; letter-spacing: -.01em; margin-bottom: 18px; }
+  .facts { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-top: 8px; }
+  .facts p { color: var(--muted); font-size: 16px; }
+  .facts strong { color: var(--ink); }
+  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
+  ol.steps li { counter-increment: step; padding: 14px 0 14px 52px; position: relative; }
+  ol.steps li::before { content: counter(step); position: absolute; left: 0; top: 14px; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  ul.report { padding-left: 22px; }
+  ul.report li { margin: 10px 0; }
+  ul.report li span { color: var(--muted); }
+  .method { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; font-size: 16px; }
+  details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  details summary { font-weight: 600; cursor: pointer; }
+  details p { margin-top: 10px; color: var(--muted); font-size: 16px; }
+  footer { padding: 48px 0 64px; color: var(--muted); font-size: 14px; }
+  footer p { margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">AlertAudit</div>
+  <h1>Your alert channel has a track record.<br>Nobody has ever checked it.</h1>
+  <p class="sub">Trading Discords charge $50–$297 a month. Premium indicators run up to $199. None of them publish an independently audited hit rate. Forward us the last 90 days of alerts from any channel — we compute what following every single call would have actually made.</p>
+  <a class="cta" href="{{STRIPE_LINK}}">Get your audit — $19</a>
+  <span class="cta-note">Founding rate · 72-hour turnaround · full refund if we can't parse your alerts</span>
+</header>
+
+<section>
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Pay $19</strong> and you'll get an intake email address on the receipt.</li>
+    <li><strong>Forward the alerts</strong> — screenshots, copy-pasted messages, or a CSV export. Any format that shows the call and its timestamp works.</li>
+    <li><strong>72 hours later</strong>, your audit report lands in your inbox.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>What's in the report</h2>
+  <ul class="report">
+    <li><strong>Real hit rate</strong> <span>— every alert scored against actual market prices at its timestamp, no cherry-picking, no "we told you so" screenshots.</span></li>
+    <li><strong>Average win, average loss, average R</strong> <span>— what the channel's risk/reward actually is, not what the marketing says.</span></li>
+    <li><strong>The $10,000 test</strong> <span>— an equity curve of a $10K account taking every alert at fixed size, next to simply holding SPY (or BTC for crypto channels) over the same window.</span></li>
+    <li><strong>Best and worst calls</strong> <span>— with timestamps, so you can verify each one yourself.</span></li>
+    <li><strong>Consistency flags</strong> <span>— vague entries, missing exits, and untrackable calls, counted and shown. A channel whose alerts can't be scored is itself a finding.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Method, in one paragraph</h2>
+  <div class="method">
+    Every alert is matched to real historical market data at its timestamp. Entries and exits follow the channel's own words — when an alert names no exit, we apply a disclosed default rule and flag it. Nothing is excluded, weighted, or smoothed. The full methodology appears on page one of every report, so you (or your guru) can dispute any line.
+  </div>
+</section>
+
+<section>
+  <h2>Questions</h2>
+  <details>
+    <summary>Which markets do you cover?</summary>
+    <p>US stocks and major crypto (spot) are fully supported. Options alerts are audited best-effort — directional wins/losses are scored precisely; exact contract P&amp;L depends on how completely strikes and expiries were stated in the alerts, and anything ambiguous is flagged rather than guessed.</p>
+  </details>
+  <details>
+    <summary>Will the channel know I did this?</summary>
+    <p>No. Your alerts are used only to produce your report, then deleted on request. We never publish the channel's name or your name. What you do with your report is up to you.</p>
+  </details>
+  <details>
+    <summary>What if my alerts can't be parsed?</summary>
+    <p>Full refund, no questions. If more than 30% of alerts are too vague to score, we'll tell you that too — and it's usually the most useful thing you'll learn about the channel.</p>
+  </details>
+  <details>
+    <summary>Is this financial advice?</summary>
+    <p>No. AlertAudit is an independent statistical analysis of a message history, for educational purposes. We don't recommend trades, channels, or strategies, and we're not affiliated with any signal provider.</p>
+  </details>
+</section>
+
+<footer>
+  <p><strong>AlertAudit</strong> — independent audits of trading alert channels.</p>
+  <p>Contact: daniil.gubin94+audit@gmail.com</p>
+</footer>
+
+</div>
+</body>
+</html>
