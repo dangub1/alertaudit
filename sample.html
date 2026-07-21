@@ -203,7 +203,7 @@ a{color:var(--verify)}
     <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><rect x="4" y="8" width="7" height="10" fill="#3ddc97"/><rect x="6.7" y="2" width="1.6" height="6" fill="#3ddc97"/><rect x="13" y="6" width="7" height="10" fill="#d1483f"/><rect x="15.7" y="16" width="1.6" height="6" fill="#d1483f"/></svg><b>ALERTAUDIT</b> · CASE FILE</span>
     <span>REPORT <b>AA-2026-001</b> (PILOT SAMPLE)</span>
     <span>WINDOW <b>2026-04-20 → 2026-07-20</b> · 90 DAYS</span>
-    <span>ISSUED <b>2026-07-21</b> · REV <b>3</b> (<a href="#changelog" style="color:var(--verify);text-decoration:none">changelog</a>)</span>
+    <span>ISSUED <b>2026-07-21</b> · REV <b>3.1</b> (<a href="#changelog" style="color:var(--verify);text-decoration:none">changelog</a>)</span>
   </div>
   <div class="masthead">
     <h1>Audit of “Binance Killers”</h1>
@@ -298,7 +298,8 @@ peaks at +117% on exchange data against a claimed +300%. The rest cannot be chec
     <div><span class="k">Posted</span><a href="https://t.me/binancekillers/19864" target="_blank" rel="noopener">2026-05-04 13:12 UTC</a></div>
     <div><span class="k">Entry (“below 0.03”)</span>filled 0.02812</div>
     <div><span class="k">Target 1 (+13.8%)</span>hit 05-10, stop untouched</div>
-    <div><span class="k">Best target</span>5 of 9 · mark +50.4%</div>
+    <div><span class="k">Best target hit</span>5 of 9 (TP5 = +70.7%)</div>
+    <div><span class="k">Peak / window end</span>+117.2% high · +50.4% mark</div>
   </div>
   <p class="muted"><b style="color:var(--ink)">Prior public ZIG calls, for context:</b> this is at
   least the fourth public ZIG entry call since August 2025 — entry 0.08–0.112
@@ -337,7 +338,8 @@ peaks at +117% on exchange data against a claimed +300%. The rest cannot be chec
     <div><span class="k">Posted</span><a href="https://t.me/binancekillers/20580" target="_blank" rel="noopener">2026-07-17 12:25 UTC</a></div>
     <div><span class="k">Entry (“below 0.0089”)</span>filled 0.008605</div>
     <div><span class="k">Target 1 (+5.75%)</span>hit in 5 hours</div>
-    <div><span class="k">Best target</span>5 of 8 · mark +34.0% <span class="muted">(3 days old — not final)</span></div>
+    <div><span class="k">Best target hit</span>5 of 8 (TP5 = +27.8%)</div>
+    <div><span class="k">Peak / window end</span>+44.8% high · +34.0% mark <span class="muted">(3 days old — not final)</span></div>
   </div>
   <p><b>The $10K test:</b> <span class="mono">$10,978</span> exiting each at Target&nbsp;1, or
   <span class="mono">$14,220</span> riding the ladder to window end — against
@@ -482,6 +484,11 @@ posts are preview-truncated and matched on visible text.</li>
 
 <details class="fold" id="changelog"><summary>Changelog</summary>
 <div class="body"><ul>
+<li><b>Rev 3.1 — 2026-07-22.</b> Clarity: the signal fact rows previously combined “best target
+hit” with the window-end mark in one cell, which read as if the calls peaked at the mark value.
+Now split: best target hit (with its own return), peak high, and window-end mark shown separately
+(ZIG: TP5 = +70.7%, peak +117.2%, mark +50.4% · BULLA: TP5 = +27.8%, peak +44.8%, mark +34.0%).
+No scoring changed.</li>
 <li><b>Rev 3 — 2026-07-21.</b> Reader-prompted extension of the claims check from the 90-day
 window to the channel's entire public history (19,451 posts since 2020-12-15). Result: 13
 advance-call posts exist in the full history (4 ZIG, 3 BULLA, 4 BTC in 2025, 2 XVG in 2025);
