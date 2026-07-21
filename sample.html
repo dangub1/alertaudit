@@ -8,12 +8,14 @@
 <meta property="og:image" content="https://alertaudit.io/og-report.png">
 <meta property="og:url" content="https://alertaudit.io/sample.html">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#101317;--surface:#171b20;--ink:#e8e6e1;--muted:#9aa3ad;--verify:#2fa08c;
---stamp:#d1483f;--line:#262b32;--radius:10px}
+--stamp:#d1483f;--stamp-hi:#de6055;--line:#262b32;--radius:10px}
+:focus-visible{outline:2px solid var(--verify);outline-offset:2px}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:16px/1.62 Archivo,ui-sans-serif,system-ui,sans-serif}
@@ -87,11 +89,11 @@ td.mono{font-size:13px;white-space:nowrap}
 .overflow{overflow-x:auto}
 .chip{font-family:'Martian Mono',monospace;font-size:11px;letter-spacing:.08em;padding:3px 8px;
 border-radius:6px;white-space:nowrap}
-.chip.fail{color:var(--stamp);background:color-mix(in oklab,var(--stamp) 12%,transparent)}
+.chip.fail{color:var(--stamp-hi);background:color-mix(in oklab,var(--stamp) 12%,transparent)}
 .chip.pass{color:var(--verify);background:color-mix(in oklab,var(--verify) 12%,transparent)}
 .finding{background:var(--surface);border-radius:var(--radius);padding:18px 22px;margin:18px 0;
 font-size:15.5px}
-.finding b{color:var(--stamp)}
+.finding b{color:var(--stamp-hi)}
 .sigfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px 18px;
 font-size:13.5px;margin:6px 0 22px}
 .sigfacts div{padding:6px 0;border-top:1px solid var(--line)}
@@ -143,7 +145,7 @@ text-transform:uppercase}
 .cx-bval{font-family:'Martian Mono',monospace;font-size:13px;font-weight:600;fill:var(--ink)}
 .cx-chip{font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.06em}
 .cx-chip.hit{fill:var(--verify)}.cx-chip.miss{fill:var(--verify);opacity:.4}
-.cx-chip.sl{fill:var(--stamp)}.cx-chip.entry{fill:var(--verify)}
+.cx-chip.sl{fill:var(--stamp-hi)}.cx-chip.entry{fill:var(--verify)}
 .cbar{transition:opacity .15s}
 svg:has(.cbar:hover) .cbar:not(:hover){opacity:.45}
 @media (prefers-reduced-motion:no-preference){
@@ -156,7 +158,7 @@ border:1px solid var(--line);border-radius:8px;padding:7px 10px;
 font-family:'Martian Mono',monospace;font-size:11px;line-height:1.6;color:var(--ink);
 opacity:0;transition:opacity .12s;max-width:240px}
 .cx-tip .d{color:var(--muted)}
-.cx-tip .up{color:var(--verify)}.cx-tip .dn{color:var(--stamp)}
+.cx-tip .up{color:var(--verify)}.cx-tip .dn{color:var(--stamp-hi)}
 
 /* ---------- ghost exhibit letters ---------- */
 .exhibit{position:relative}
@@ -186,8 +188,11 @@ box-shadow .18s cubic-bezier(.25,1,.5,1)}
 /* ---------- footer ---------- */
 footer{margin-top:64px;border-top:1px solid var(--line);padding-top:28px}
 footer .close{font-size:15px;color:var(--muted);max-width:60ch}
-.cta{display:inline-block;background:var(--verify);color:#0b0e11;font-weight:800;font-size:16px;
+.cta{display:inline-block;background:var(--ink);color:#0b0e11;font-weight:800;font-size:16px;
 padding:13px 26px;border-radius:var(--radius);text-decoration:none;margin-top:18px}
+.midcta{margin:36px 0 -8px}
+.midcta .note{display:block;font-family:'Martian Mono',monospace;font-size:11px;
+letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:10px}
 .cta:hover{filter:brightness(1.08)}
 footer .legal{font-size:12.5px;color:var(--muted);margin-top:22px;line-height:1.6}
 a{color:var(--verify)}
@@ -195,7 +200,7 @@ a{color:var(--verify)}
 
 <header class="case">
   <div class="case-meta">
-    <span><b>ALERTAUDIT</b> · CASE FILE</span>
+    <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><rect x="4" y="8" width="7" height="10" fill="#3ddc97"/><rect x="6.7" y="2" width="1.6" height="6" fill="#3ddc97"/><rect x="13" y="6" width="7" height="10" fill="#d1483f"/><rect x="15.7" y="16" width="1.6" height="6" fill="#d1483f"/></svg><b>ALERTAUDIT</b> · CASE FILE</span>
     <span>REPORT <b>AA-2026-001</b> (PILOT SAMPLE)</span>
     <span>WINDOW <b>2026-04-20 → 2026-07-20</b> · 90 DAYS</span>
     <span>ISSUED <b>2026-07-21</b></span>
@@ -328,6 +333,11 @@ channel has publicly posted.</em></p>
   <b>34% to 100%</b>. Two wins is consistent with skill <i>and</i> with luck.</p>
 </section>
 
+<div class="midcta">
+  <a class="cta" href="https://gubindaniil.gumroad.com/l/alertaudit">Run this audit on your channel — $19</a>
+  <span class="note">48-hour turnaround · full refund if your alerts can't be parsed</span>
+</div>
+
 <section class="exhibit" data-letter="C">
   <span class="tag">Exhibit C · Claims vs. public record</span>
   <h2>36 profit claims. We looked for the trades.</h2>
@@ -339,10 +349,10 @@ channel has publicly posted.</em></p>
 <tr><td class="mono"><a href="https://t.me/binancekillers/19811" target="_blank" rel="noopener">2026-04-28</a></td><td class="mono">$XTZ</td><td>“88% profit”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
 <tr><td class="mono"><a href="https://t.me/binancekillers/19931" target="_blank" rel="noopener">2026-05-09</a></td><td class="mono">$ICP</td><td>“1225% + total profit for May”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
 <tr><td class="mono"><a href="https://t.me/binancekillers/20127" target="_blank" rel="noopener">2026-05-29</a></td><td class="mono">$WLD</td><td>“🔥 44.2% Profit (5x) 🔥”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
-<tr><td class="mono"><a href="https://t.me/binancekillers/20464" target="_blank" rel="noopener">2026-07-06</a></td><td class="mono">$SKY</td><td>“We called this bounce early and we're currently sitting on a 77% profit (5x) fro”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
-<tr><td class="mono"><a href="https://t.me/binancekillers/20476" target="_blank" rel="noopener">2026-07-07</a></td><td class="mono">$SOL</td><td>“We're currently sitting on 108% profit (5x) from this call, and price has alread”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
-<tr><td class="mono"><a href="https://t.me/binancekillers/20488" target="_blank" rel="noopener">2026-07-08</a></td><td class="mono">$UNI</td><td>“We're sitting on 227% profit (5x) from this call, with just the final target lef”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
-<tr><td class="mono"><a href="https://t.me/binancekillers/20552" target="_blank" rel="noopener">2026-07-15</a></td><td class="mono">$LINK</td><td>“We're sitting on 24% profit with the first target already touched, and price jus”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
+<tr><td class="mono"><a href="https://t.me/binancekillers/20464" target="_blank" rel="noopener">2026-07-06</a></td><td class="mono">$SKY</td><td>“We called this bounce early and we're currently sitting on a 77% profit (5x) fro…”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
+<tr><td class="mono"><a href="https://t.me/binancekillers/20476" target="_blank" rel="noopener">2026-07-07</a></td><td class="mono">$SOL</td><td>“We're currently sitting on 108% profit (5x) from this call, and price has alread…”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
+<tr><td class="mono"><a href="https://t.me/binancekillers/20488" target="_blank" rel="noopener">2026-07-08</a></td><td class="mono">$UNI</td><td>“We're sitting on 227% profit (5x) from this call, with just the final target lef…”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
+<tr><td class="mono"><a href="https://t.me/binancekillers/20552" target="_blank" rel="noopener">2026-07-15</a></td><td class="mono">$LINK</td><td>“We're sitting on 24% profit with the first target already touched, and price jus…”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
 <tr><td class="mono"><a href="https://t.me/binancekillers/20601" target="_blank" rel="noopener">2026-07-19</a></td><td class="mono">$LINK</td><td>“✔ $LINK up 50% from our entry ✔”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
   </table></div>
   <div class="finding"><b>Finding:</b> every claim refers to trades whose entry calls never appeared

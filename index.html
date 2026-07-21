@@ -7,65 +7,138 @@
 <meta name="description" content="Forward 90 days of alerts from any paid Discord, indicator, or signal service. Get an independent audit: real hit rate, average R, and what following every alert would have actually made.">
 <meta property="og:title" content="AlertAudit — independent audits of trading alert channels">
 <meta property="og:description" content="Your alert channel has a track record. Nobody has ever checked it. $19 · 48h.">
-<meta property="og:image" content="https://alertaudit.io/og-cover.png">
+<meta property="og:image" content="https://alertaudit.io/og-cover.jpg">
 <meta property="og:url" content="https://alertaudit.io/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alertaudit.io/og-cover.jpg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #fbfaf8; --ink: #1a1d21; --muted: #5c6470; --accent: #0d6e5f;
-    --accent-ink: #ffffff; --card: #ffffff; --line: #e5e2dc; --warn-bg: #fdf6ec;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #101317; --ink: #e8e6e1; --muted: #9aa3ad; --accent: #2fa08c;
-      --accent-ink: #0b0e11; --card: #171b20; --line: #262b32; --warn-bg: #1c1913; }
-  }
-  * { box-sizing: border-box; margin: 0; }
-  body { background: var(--bg); color: var(--ink); font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 72px 0 56px; }
-  .kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
-  h1 { font-size: clamp(30px, 5.5vw, 44px); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; }
-  .sub { margin-top: 20px; font-size: 19px; color: var(--muted); }
-  .cta { display: inline-block; margin-top: 32px; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 18px; padding: 14px 28px; border-radius: 10px; text-decoration: none; }
-  .cta:hover { filter: brightness(1.08); }
-  .cta-note { display: block; margin-top: 10px; font-size: 14px; color: var(--muted); }
-  section { padding: 40px 0; border-top: 1px solid var(--line); }
-  h2 { font-size: 24px; letter-spacing: -.01em; margin-bottom: 18px; }
-  .facts { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-top: 8px; }
-  .facts p { color: var(--muted); font-size: 16px; }
-  .facts strong { color: var(--ink); }
-  ol.steps { padding-left: 0; list-style: none; counter-reset: step; }
-  ol.steps li { counter-increment: step; padding: 14px 0 14px 52px; position: relative; }
-  ol.steps li::before { content: counter(step); position: absolute; left: 0; top: 14px; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 700; display: flex; align-items: center; justify-content: center; }
-  ul.report { padding-left: 22px; }
-  ul.report li { margin: 10px 0; }
-  ul.report li span { color: var(--muted); }
-  .method { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; font-size: 16px; }
-  details { border-bottom: 1px solid var(--line); padding: 14px 0; }
-  details summary { font-weight: 600; cursor: pointer; }
-  details p { margin-top: 10px; color: var(--muted); font-size: 16px; }
-  footer { padding: 48px 0 64px; color: var(--muted); font-size: 14px; }
-  footer p { margin-top: 8px; }
+:root{--bg:#101317;--surface:#171b20;--ink:#e8e6e1;--muted:#9aa3ad;--verify:#2fa08c;
+--stamp:#d1483f;--line:#262b32;--radius:10px}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:16.5px/1.62 Archivo,ui-sans-serif,system-ui,sans-serif}
+.mono{font-family:'Martian Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px 64px}
+:focus-visible{outline:2px solid var(--verify);outline-offset:2px}
+a{color:var(--verify)}
+
+/* ---------- case-file header ---------- */
+.case{padding:30px 0 0}
+.case-meta{display:flex;flex-wrap:wrap;gap:8px 26px;font-family:'Martian Mono',monospace;
+font-size:12px;color:var(--muted);letter-spacing:.02em;border-bottom:1px solid var(--line);
+padding-bottom:14px}
+.case-meta b{color:var(--ink);font-weight:600}
+.case-meta .brand{display:inline-flex;align-items:center;gap:8px}
+.case-meta svg{display:block}
+.masthead{position:relative;padding:42px 0 6px}
+.masthead h1{font-weight:800;font-size:clamp(30px,5.4vw,46px);letter-spacing:-.02em;
+line-height:1.12;max-width:17ch;text-wrap:balance}
+.stamp{--rot:-7deg;position:absolute;right:0;top:44px;transform:rotate(var(--rot));
+font-family:Anton,Archivo,sans-serif;font-size:clamp(17px,2.6vw,26px);letter-spacing:.05em;
+color:var(--stamp);border:3px solid var(--stamp);box-shadow:inset 0 0 0 1.5px var(--stamp);
+outline:1px solid color-mix(in oklab,var(--stamp) 35%,transparent);outline-offset:5px;
+padding:9px 18px 7px;text-transform:uppercase;text-align:center;line-height:1.12;
+background:color-mix(in oklab,var(--stamp) 7%,transparent);user-select:none}
+.stamp small{display:block;font-family:'Martian Mono',monospace;font-size:9px;
+letter-spacing:.14em;color:var(--stamp);opacity:.85;margin-top:4px}
+@media (max-width:740px){.stamp{--rot:-4deg;position:static;display:inline-block;margin-top:20px}}
+.sub{color:var(--muted);margin-top:24px;font-size:16.5px;max-width:56ch;text-wrap:pretty}
+.cta-row{margin-top:30px}
+.cta{display:inline-block;background:var(--ink);color:#0b0e11;font-weight:800;font-size:16.5px;
+padding:14px 28px;border-radius:var(--radius);text-decoration:none;
+transition:transform .15s cubic-bezier(.25,1,.5,1),filter .15s}
+.cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.cta:active{transform:translateY(1px)}
+.cta-note{display:block;margin-top:12px;font-family:'Martian Mono',monospace;font-size:11px;
+letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.sample-link{display:inline-block;margin-top:16px;color:var(--verify);font-weight:600;
+font-size:15.5px;text-decoration:none}
+.sample-link:hover{text-decoration:underline}
+.sample-note{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+/* ---------- sections ---------- */
+section{margin-top:52px;border-top:1px solid var(--line);padding-top:32px}
+h2{font-weight:800;font-size:23px;letter-spacing:-.02em;margin-bottom:16px;text-wrap:balance}
+
+ol.steps{list-style:none;padding:0}
+ol.steps li{display:grid;grid-template-columns:40px 1fr;gap:0 14px;padding:12px 0}
+ol.steps .n{font-family:'Martian Mono',monospace;font-size:12px;font-weight:600;
+color:var(--verify);padding-top:4px}
+ol.steps li strong{color:var(--ink)}
+ol.steps li div{max-width:60ch}
+
+ul.report{list-style:none;padding:0}
+ul.report li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;max-width:66ch}
+ul.report li:last-child{border-bottom:0}
+ul.report li span{color:var(--muted)}
+
+.method{background:var(--surface);border-radius:var(--radius);padding:20px 24px;
+font-size:15.5px;max-width:66ch}
+
+.fold{border-top:1px solid var(--line)}
+.fold:last-of-type{border-bottom:1px solid var(--line)}
+.fold summary{cursor:pointer;padding:15px 0;font-weight:600;font-size:15.5px;color:var(--ink);
+list-style:none;display:flex;align-items:baseline;gap:12px;transition:color .15s}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::before{content:"+";color:var(--verify);font-family:'Martian Mono',monospace;
+font-size:14px;width:14px;flex:none}
+.fold[open] summary::before{content:"–"}
+.fold summary:hover{color:var(--verify)}
+.fold p{padding:0 0 18px 26px;color:var(--muted);font-size:15px;max-width:62ch}
+.fold p strong{color:var(--ink)}
+
+footer{margin-top:56px;border-top:1px solid var(--line);padding-top:26px;
+font-size:13px;color:var(--muted);line-height:1.7}
+footer .fbrand{display:flex;align-items:center;gap:8px;font-family:'Martian Mono',monospace;
+font-size:12px;color:var(--ink);letter-spacing:.02em;margin-bottom:10px}
+footer a{color:var(--verify);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ---------- load choreography (transform-only, always visible) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .masthead h1,.sub,.cta-row{animation:rise .5s cubic-bezier(.25,1,.5,1) both}
+  .sub{animation-delay:.06s}
+  .cta-row{animation-delay:.12s}
+  .stamp{animation:slam .42s cubic-bezier(.16,1,.3,1) .2s both}
+  @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+  @keyframes slam{0%{transform:rotate(calc(var(--rot) - 6deg)) scale(1.4)}
+  100%{transform:rotate(var(--rot)) scale(1)}}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<header>
-  <div class="kicker">AlertAudit</div>
-  <h1>Your alert channel has a track record.<br>Nobody has ever checked it.</h1>
-  <p class="sub">Trading Discords charge $50–$297 a month. Premium indicators run up to $199. None of them publish an independently audited hit rate. Forward us the last 90 days of alerts from any channel — we compute what following every single call would have actually made.</p>
-  <a class="cta" href="https://gubindaniil.gumroad.com/l/alertaudit">Get your audit — $19</a>
-  <span class="cta-note">Founding rate · 48-hour turnaround · full refund if we can't parse your alerts</span>
-  <span class="cta-note" style="margin-top:6px"><a href="sample.html" style="color:var(--accent);font-weight:600">Read a real sample report →</a> (we audited a 319k-subscriber signal channel's public feed)</span>
+<header class="case">
+  <div class="case-meta">
+    <span class="brand"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="7" height="10" fill="#3ddc97"/><rect x="6.7" y="2" width="1.6" height="6" fill="#3ddc97"/><rect x="13" y="6" width="7" height="10" fill="#d1483f"/><rect x="15.7" y="16" width="1.6" height="6" fill="#d1483f"/></svg><b>ALERTAUDIT</b></span>
+    <span>INDEPENDENT AUDITS OF TRADING ALERT CHANNELS</span>
+    <span>FEE <b>$19</b> · TURNAROUND <b>48H</b></span>
+  </div>
+  <div class="masthead">
+    <h1>Your alert channel has a track record. Nobody has ever checked it.</h1>
+    <div class="stamp" role="img" aria-label="Stamp: unaudited — no independent review on file">
+      UNAUDITED<small>NO INDEPENDENT REVIEW ON FILE</small>
+    </div>
+    <p class="sub">Trading Discords charge $50–$297 a month. Premium indicators run up to $199. None of them publish an independently audited hit rate. Forward us the last 90 days of alerts from any channel — we compute what following every single call would have actually made.</p>
+    <div class="cta-row">
+      <a class="cta" href="https://gubindaniil.gumroad.com/l/alertaudit">Get your audit — $19</a>
+      <span class="cta-note">Founding price · 48-hour turnaround · full refund if we can't parse your alerts</span>
+      <a class="sample-link" href="sample.html">Read a real sample report →</a>
+      <p class="sample-note">We audited the public feed of a 319,000-subscriber signal channel. Every line links to its source.</p>
+    </div>
+  </div>
 </header>
 
 <section>
   <h2>How it works</h2>
   <ol class="steps">
-    <li><strong>Pay $19</strong> and you'll get an intake email address on the receipt.</li>
-    <li><strong>Forward the alerts</strong> — screenshots, copy-pasted messages, or a CSV export. Any format that shows the call and its timestamp works.</li>
-    <li><strong>Within 48 hours</strong>, your audit report lands in your inbox.</li>
+    <li><span class="n">01</span><div><strong>Pay $19</strong> and you'll get an intake email address on the receipt.</div></li>
+    <li><span class="n">02</span><div><strong>Forward the alerts</strong> — screenshots, copy-pasted messages, or a CSV export. Any format that shows the call and its timestamp works.</div></li>
+    <li><span class="n">03</span><div><strong>Within 48 hours</strong>, your audit report lands in your inbox.</div></li>
   </ol>
 </section>
 
@@ -89,35 +162,36 @@
 
 <section>
   <h2>Questions</h2>
-  <details>
+  <details class="fold">
     <summary>Which markets do you cover?</summary>
     <p>US stocks and major crypto (spot) are fully supported. Options alerts are audited best-effort — directional wins/losses are scored precisely; exact contract P&amp;L depends on how completely strikes and expiries were stated in the alerts, and anything ambiguous is flagged rather than guessed.</p>
   </details>
-  <details>
+  <details class="fold">
     <summary>What exactly do I need to send?</summary>
     <p>The last 90 days of the channel's alerts (or at least ~15 of them) in any format that shows the <strong>original timestamps</strong> — screenshots, copy-pasted messages, a chat export, or a TradingView alert-log export. Timestamps must be the platform's own, not typed in afterward. Don't clean anything up: vague alerts, missing exits and deleted-then-reposted calls are part of the audit — we count them, and that count is often the most useful finding. If too little is scoreable, the report says exactly that, and if we can't parse your material at all, you get a refund.</p>
   </details>
-  <details>
+  <details class="fold">
     <summary>Can you audit a TradingView indicator?</summary>
     <p>Yes — through its fired-alert log. Alerts fire in real time and can't be redrawn, so they're immune to repainting (scripts that redraw past signals to look prophetic). Export or screenshot your alert log — 90 days or 15+ alerts — and it's scored like any channel. We audit what verifiably fired, not what the chart repainted. Historical markers painted on a chart are not accepted as evidence.</p>
   </details>
-  <details>
+  <details class="fold">
     <summary>Will the channel know I did this?</summary>
     <p>No. Your alerts are used only to produce your report, then deleted on request. We never publish the channel's name or your name. What you do with your report is up to you.</p>
   </details>
-  <details>
+  <details class="fold">
     <summary>What if my alerts can't be parsed?</summary>
     <p>Full refund, no questions. If more than 30% of alerts are too vague to score, we'll tell you that too — and it's usually the most useful thing you'll learn about the channel.</p>
   </details>
-  <details>
+  <details class="fold">
     <summary>Is this financial advice?</summary>
     <p>No. AlertAudit is an independent statistical analysis of a message history, for educational purposes. We don't recommend trades, channels, or strategies, and we're not affiliated with any signal provider.</p>
   </details>
 </section>
 
 <footer>
-  <p><strong>AlertAudit</strong> — independent audits of trading alert channels.</p>
-  <p>Contact: audit@alertaudit.io</p>
+  <div class="fbrand"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="7" height="10" fill="#3ddc97"/><rect x="6.7" y="2" width="1.6" height="6" fill="#3ddc97"/><rect x="13" y="6" width="7" height="10" fill="#d1483f"/><rect x="15.7" y="16" width="1.6" height="6" fill="#d1483f"/></svg>ALERTAUDIT</div>
+  <p>Independent audits of trading alert channels. Every factual claim in every report links to its source, and any audited channel may dispute any line — demonstrated errors are corrected within 48 hours with a visible changelog.</p>
+  <p>Contact: <a href="mailto:audit@alertaudit.io">audit@alertaudit.io</a></p>
 </footer>
 
 </div>
