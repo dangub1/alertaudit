@@ -203,7 +203,7 @@ a{color:var(--verify)}
     <span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><rect x="4" y="8" width="7" height="10" fill="#3ddc97"/><rect x="6.7" y="2" width="1.6" height="6" fill="#3ddc97"/><rect x="13" y="6" width="7" height="10" fill="#d1483f"/><rect x="15.7" y="16" width="1.6" height="6" fill="#d1483f"/></svg><b>ALERTAUDIT</b> · CASE FILE</span>
     <span>REPORT <b>AA-2026-001</b> (PILOT SAMPLE)</span>
     <span>WINDOW <b>2026-04-20 → 2026-07-20</b> · 90 DAYS</span>
-    <span>ISSUED <b>2026-07-21</b> · REV <b>2</b> (<a href="#changelog" style="color:var(--verify);text-decoration:none">changelog</a>)</span>
+    <span>ISSUED <b>2026-07-21</b> · REV <b>3</b> (<a href="#changelog" style="color:var(--verify);text-decoration:none">changelog</a>)</span>
   </div>
   <div class="masthead">
     <h1>Audit of “Binance Killers”</h1>
@@ -354,8 +354,8 @@ peaks at +117% on exchange data against a claimed +300%. The rest cannot be chec
 <section class="exhibit" data-letter="C">
   <span class="tag">Exhibit C · Claims vs. public record</span>
   <h2>39 posts claim profits. We looked for the trades.</h2>
-  <p>For every coin-specific profit claim in the window, we searched the channel's own public
-  history for the advance call it refers to:</p>
+  <p>For every coin-specific profit claim in the window, we searched the channel's <b>entire public
+  history</b> — 19,451 posts back to December 2020 — for the advance call it refers to:</p>
   <div class="overflow"><table>
     <tr><th>Date</th><th>Coin</th><th>Claim (verbatim)</th><th>Public advance call</th></tr>
     <tr><td class="mono"><a href="https://t.me/binancekillers/19776" target="_blank" rel="noopener">2026-04-24</a></td><td class="mono">$CHZ</td><td>“+107% profit”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
@@ -381,10 +381,12 @@ peaks at +117% on exchange data against a claimed +300%. The rest cannot be chec
 <tr><td class="mono"><a href="https://t.me/binancekillers/20552" target="_blank" rel="noopener">2026-07-15</a></td><td class="mono">$LINK</td><td>“We're sitting on 24% profit with the first target already touched, and price jus…”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
 <tr><td class="mono"><a href="https://t.me/binancekillers/20601" target="_blank" rel="noopener">2026-07-19</a></td><td class="mono">$LINK</td><td>“✔ $LINK up 50% from our entry ✔”</td><td><span class="chip fail">NONE FOUND</span></td></tr>
   </table></div>
-  <div class="finding"><b>Finding:</b> of the 22 coin-specific claims, 21 refer to trades whose
-  entry calls never appeared in the public feed — attributed to a private VIP service — and can be
-  neither substantiated <i>nor</i> refuted, like the month totals of “770%”, “1035%”, “1225%” and
-  “almost 1800%”. The single claim that does map to a public call — “ZIG (GEM Signal) +300%”
+  <div class="finding"><b>Finding:</b> the channel's entire public history — 19,451 posts since
+  December 2020 — contains just <b>13</b> advance-call posts: four for ZIG, three for BULLA
+  (incl. re-posts), four for BTC (2025) and two for XVG (2025). Of the 22 coin-specific claims,
+  21 refer to trades with no public entry call <i>anywhere in that history</i> — attributed to a
+  private VIP service — and can be neither substantiated <i>nor</i> refuted, like the month totals
+  of “770%”, “1035%”, “1225%” and “almost 1800%”. The single claim that does map to a public call — “ZIG (GEM Signal) +300%”
   (<a href="https://t.me/binancekillers/20172" target="_blank" rel="noopener">#20172</a>, referring
   to <a href="https://t.me/binancekillers/19864" target="_blank" rel="noopener">signal #19864</a>) —
   is contradicted by exchange data: the public price path peaked at <b>+117%</b> from the audited
@@ -419,6 +421,8 @@ peaks at +117% on exchange data against a claimed +300%. The rest cannot be chec
       <li>Both real public calls won, in a falling market.</li>
       <li>Advertised accuracy figures have no public evidence behind them — and the one checkable
       profit claim is contradicted by exchange data.</li>
+      <li>Only 13 posts in the channel's entire public history (19,451 posts since Dec 2020)
+      contain an advance call.</li>
       <li>4.5% of all posts are performance marketing.</li>
     </ul></section>
     <section class="no"><h3>The data cannot tell you</h3><ul>
@@ -469,11 +473,20 @@ pattern as other coins that pumped 10-20x’”</p>
 <li>Benchmark: Bybit BTCUSDT daily, 2026-04-20 open 73,803 → 2026-07-20 close 65,258 (−11.6%).</li>
 <li>Telegram's public preview truncates 8 long posts in the window; each is classified by its
 visible text. The four ZIG re-posts are matched to signal #19864 by identical visible signal text.</li>
+<li>Full-history check (Rev 3): all 19,451 public posts (2020-12-15 → 2026-07-21) scanned;
+13 contain a visible advance call — #17358, #18554, #19233, #19864 (ZIG), #20580, #20597, #20600
+(BULLA), #16662, #16663, #17342, #17343 (BTC, 2025), #17937, #17995 (XVG, 2025). 1,495 history
+posts are preview-truncated and matched on visible text.</li>
 <li>Confidence intervals: Wilson score, 95%.</li>
 </ul></div></details>
 
 <details class="fold" id="changelog"><summary>Changelog</summary>
 <div class="body"><ul>
+<li><b>Rev 3 — 2026-07-21.</b> Reader-prompted extension of the claims check from the 90-day
+window to the channel's entire public history (19,451 posts since 2020-12-15). Result: 13
+advance-call posts exist in the full history (4 ZIG, 3 BULLA, 4 BTC in 2025, 2 XVG in 2025);
+every “NONE FOUND” row is confirmed at full-history scope. Methodology and Appendix B updated;
+no verdict or number in the claims table changed.</li>
 <li><b>Rev 2 — 2026-07-21.</b> Reader-prompted re-audit of the ZIG signal's history. Corrections:
 (a) four in-window re-posts of signal #19864 were truncated by Telegram's public preview and
 misclassified — advance-signal posts 4 → 8 (unique signals unchanged at 2);
